@@ -1,0 +1,80 @@
+
+C:\Users\dhruv\Desktop\dop\web\src\components\AboutMe.tsx
+  18:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dhruv\Desktop\dop\web\src\components\AboutMe.tsx:18:13
+  16 |         if (clickCount >= 5) {
+  17 |             router.push('/admin');
+> 18 |             setClickCount(0);
+     |             ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  19 |         }
+  20 |         return () => clearTimeout(timer);
+  21 |     }, [clickCount, router]);  react-hooks/set-state-in-effect
+
+C:\Users\dhruv\Desktop\dop\web\src\components\Admin\ProjectForm.tsx
+    5:19  warning  'Upload' is defined but never used            @typescript-eslint/no-unused-vars
+   20:12  warning  'mounted' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  117:28  error    Unexpected any. Specify a different type      @typescript-eslint/no-explicit-any
+
+C:\Users\dhruv\Desktop\dop\web\src\components\Admin\ProjectList.tsx
+  5:33  warning  'ImageIcon' is defined but never used        @typescript-eslint/no-unused-vars
+  5:76  warning  'Smartphone' is defined but never used       @typescript-eslint/no-unused-vars
+  6:19  warning  'useDragControls' is defined but never used  @typescript-eslint/no-unused-vars
+
+C:\Users\dhruv\Desktop\dop\web\src\components\ClapperboardLoader.tsx
+  25:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\dhruv\Desktop\dop\web\src\components\ClapperboardLoader.tsx:25:13
+  23 |         } else if (progress >= 100 && !hasClapped) {
+  24 |             // CLAP!
+> 25 |             setHasClapped(true);
+     |             ^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  26 |             const clapSequence = async () => {
+  27 |                 // Ensure it's fully open first (optional, but good for consistency)
+  28 |                 await controls.start({ rotate: -40, transition: { duration: 0.1 } });  react-hooks/set-state-in-effect
+
+C:\Users\dhruv\Desktop\dop\web\src\components\ContactFooter.tsx
+   3:10  warning  'motion' is defined but never used                                                                                                                                                                                                                                                       @typescript-eslint/no-unused-vars
+   4:10  warning  'ArrowRight' is defined but never used                                                                                                                                                                                                                                                   @typescript-eslint/no-unused-vars
+  11:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\dhruv\Desktop\dop\web\src\components\Credits.tsx
+  73:41  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\dhruv\Desktop\dop\web\src\components\HeroSection.tsx
+  25:13  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  37:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\dhruv\Desktop\dop\web\src\components\IntroSequence.tsx
+    4:64  warning  'AnimatePresence' is defined but never used                                                                                        @typescript-eslint/no-unused-vars
+   11:41  warning  'onComplete' is defined but never used                                                                                             @typescript-eslint/no-unused-vars
+   27:11  warning  'overlayOpacity' is assigned a value but never used                                                                                @typescript-eslint/no-unused-vars
+  117:8   warning  React Hook useEffect has missing dependencies: 'frameIndex' and 'renderFrame'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+  124:8   warning  React Hook useEffect has a missing dependency: 'renderFrame'. Either include it or remove the dependency array                     react-hooks/exhaustive-deps
+
+C:\Users\dhruv\Desktop\dop\web\src\components\UpcomingProjects.tsx
+   4:34  warning  'useTransform' is defined but never used                                                                                                                                                                                                                                                 @typescript-eslint/no-unused-vars
+   4:48  warning  'animate' is defined but never used                                                                                                                                                                                                                                                      @typescript-eslint/no-unused-vars
+  61:45  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\dhruv\Desktop\dop\web\src\components\VideoModal.tsx
+   3:18  warning  'AnimatePresence' is defined but never used        @typescript-eslint/no-unused-vars
+   4:13  warning  'Play' is defined but never used                   @typescript-eslint/no-unused-vars
+  37:14  warning  'e' is defined but never used                      @typescript-eslint/no-unused-vars
+  44:12  warning  'isPlaying' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  44:23  warning  'setIsPlaying' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+✖ 27 problems (3 errors, 24 warnings)
+
