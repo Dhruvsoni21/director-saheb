@@ -13,7 +13,7 @@ export default function ProjectGrid({ projects, onOpenProject }: { projects: Pro
     return (
         <section className="py-24 bg-black border-t border-neutral-900">
             <div className="container mx-auto px-4">
-                <h2 className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-12 ml-2">Archive</h2>
+                <h2 className="text-xs uppercase tracking-[0.3em] text-white/60 mb-12 ml-2">Elsewhere</h2>
 
                 <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-8 custom-scrollbar">
                     {displayProjects.map((project) => (
@@ -38,7 +38,7 @@ export default function ProjectGrid({ projects, onOpenProject }: { projects: Pro
                                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-neutral-800">
+                                    <div className="w-full h-full flex items-center justify-center text-white/20">
                                         <span className="uppercase tracking-widest text-xs">Video</span>
                                     </div>
                                 )}
@@ -55,10 +55,10 @@ export default function ProjectGrid({ projects, onOpenProject }: { projects: Pro
 
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-white text-sm uppercase tracking-widest font-medium group-hover:text-neutral-400 transition-colors">{project.title}</h3>
-                                    <p className="text-neutral-500 text-xs mt-1">{project.category}</p>
+                                    <h3 className="text-white text-sm uppercase tracking-widest font-primary group-hover:text-white/70 transition-colors">{project.title}</h3>
+                                    <p className="text-white/60 text-xs mt-1">{project.category}</p>
                                 </div>
-                                <span className="text-neutral-600 text-xs">
+                                <span className="text-white/40 text-xs">
                                     {project.date ? new Date(project.date).getFullYear() : '2025'}
                                 </span>
                             </div>

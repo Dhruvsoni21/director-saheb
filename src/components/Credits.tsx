@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from "framer-motion";
@@ -54,7 +55,7 @@ export default function Credits() {
                     className="text-center mb-16"
                 >
                     <h2 className="text-2xl uppercase tracking-[0.3em] text-neutral-500 mb-4">Shout out to Kshitij</h2>
-                    <p className="text-2xl font-serif text-white/90 italic">Tumhari is website ko Yogdan</p>
+                    <p className="text-2xl font-primary text-white/90 italic">Tumhari is website ko Yogdan</p>
                 </motion.div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -65,11 +66,11 @@ export default function Credits() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: index * 0.1 }}
                             viewport={{ once: true }}
-                            className="group relative p-8 rounded-2xl bg-neutral-900/30 border border-neutral-800 hover:border-amber-500/30 transition-all hover:bg-neutral-900/50"
+                            className="group relative p-8 rounded-2xl bg-neutral-900/30 border border-neutral-800 hover:border-white/30 transition-all hover:bg-neutral-900/50"
                         >
                             <div className="flex flex-col items-center text-center h-full">
                                 {person.image && (
-                                    <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-neutral-700 group-hover:border-amber-500 transition-colors shadow-lg">
+                                    <div className="w-32 h-32 mb-6 rounded-full overflow-hidden border-2 border-neutral-700 group-hover:border-white transition-colors shadow-lg">
                                         <img
                                             src={person.image}
                                             alt={person.name}
@@ -80,7 +81,7 @@ export default function Credits() {
 
                                 <div className="mb-3">
                                     <h3 className="text-xl text-white font-medium mb-1">{person.name}</h3>
-                                    <span className="text-xs font-medium tracking-widest text-[#f59f00] uppercase block">{person.role}</span>
+                                    <span className="text-xs font-medium tracking-widest text-white uppercase block">{person.role}</span>
                                 </div>
 
                                 <p className="text-neutral-400 text-sm mb-6 font-light leading-relaxed max-w-[80%] mx-auto">{person.description}</p>
@@ -91,7 +92,7 @@ export default function Credits() {
                                             key={i}
                                             href={link.href}
                                             {...(link.href.startsWith('http') ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                                            className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-[#f59f00] hover:text-black transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                                            className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center text-neutral-400 hover:bg-white hover:text-black transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                                             title={link.label}
                                         >
                                             {link.icon}

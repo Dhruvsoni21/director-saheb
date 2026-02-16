@@ -77,7 +77,7 @@ export default function ClapperboardLoader({ progress, onComplete }: Clapperboar
                 </svg>
             </div>
 
-            <p className="mt-8 text-neutral-500 font-mono text-xs tracking-widest uppercase">
+            <p className="mt-8 text-white/60 font-mono text-xs tracking-widest uppercase">
                 {progress === 100 ? "Action!" : "Adjusting Frames..."}
             </p>
         </div>

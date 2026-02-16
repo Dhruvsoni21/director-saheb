@@ -29,12 +29,12 @@ export default function AboutMe() {
     return (
         <section className="py-24 bg-neutral-950 border-t border-neutral-900 overflow-hidden">
             <div className="container mx-auto px-4">
-                <h2 className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-16 ml-2 relative z-10">About Me</h2>
+                <h2 className="text-xs uppercase tracking-[0.3em] text-white/60 mb-16 ml-2 relative z-10">There</h2>
 
                 <div className="relative max-w-4xl mx-auto">
                     {/* Decorative Background Elements */}
-                    <div className="absolute -top-20 -left-20 w-96 h-96 bg-amber-500/10 rounded-full blur-[100px] pointer-events-none" />
-                    <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
+                    <div className="absolute -top-20 -left-20 w-96 h-96 bg-white/5 rounded-full blur-[100px] pointer-events-none" />
+                    <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-white/5 rounded-full blur-[100px] pointer-events-none" />
 
                     {/* Main Card */}
                     <div className="relative bg-neutral-900/40 backdrop-blur-md border border-white/5 rounded-[2rem] py-12 px-6 md:py-32 md:px-16 overflow-hidden">
@@ -81,49 +81,26 @@ export default function AboutMe() {
                                     viewport={{ once: true }}
                                     className="text-center md:text-left relative"
                                 >
-                                    <div className="inline-block px-3 py-1 mb-6 border border-amber-500/30 rounded-full bg-amber-500/10 text-amber-500 text-[10px] tracking-widest uppercase">
-                                        Director
+                                    <div className="inline-block px-3 py-1 mb-6 border border-white/30 rounded-full bg-white/10 text-white text-[10px] tracking-widest">
+                                        di·rec·tor
                                     </div>
 
-                                    <div className="mb-8">
-                                        <h3 className="text-3xl md:text-5xl font-light text-white leading-tight">
-                                            Kon Kshitij Kon Kshitij Kon Kshitij
-                                        </h3>
-                                        <p className="text-xl md:text-2xl text-amber-500/80 font-serif italic mt-2">
-                                            Cinema Elia to Jaun Kshitij.....
+                                    <div className="space-y-6 text-white/80 leading-relaxed font-light">
+                                        <p className="text-xl md:text-2xl text-white font-medium italic">
+                                            "Cinema didn’t inspire me, it consumed me."
                                         </p>
-                                    </div>
 
-                                    <div className="space-y-8">
-                                        <blockquote className="border-l-2 border-amber-500/50 pl-6 py-2 italic text-lg md:text-xl text-neutral-300 font-light flex flex-col gap-2">
-                                            <span>&ldquo;I want to change the whole fuckin&rsquo; Idea of this Industry aur Mainstream&hellip; I&rsquo;m Building a sensible environment around me, where I, mere homies log, and everyone who is connected or concerned in any way with art, bas grow karein.&rdquo;
-                                            </span>
-                                            <span className="text-right text-[#ffbf00] font-serif pr-4">~ Kshitij</span>
-                                        </blockquote>
+                                        <p>
+                                            I’ve watched, listened, and lived with stories long enough for them to stop being optional. Music keeps my pulse alive; cinema gives it purpose. This was never a career plan. It was always instinct.
+                                        </p>
 
+                                        <p>
+                                            Not in the game for love, I just got love for the game, <span className="italic text-white">kripiya dhyan rakhein.</span> - Dhanji. Not here to replace one system with another or play power games dressed up as progress. My idea of change is creating space, enough space for people to breathe, think, and make without asking permission. I don’t call myself a visionary, but I do look past the obvious. What you see is only the surface.
+                                        </p>
 
-                                        <div className="text-neutral-400 leading-relaxed text-base space-y-6 font-light">
-                                            <p>
-                                                If you think that I am creating a whole new chain, <span className="text-neutral-300 italic">ek alag nazariye ke sath</span>, of nepotism, then I don’t need to shut you up or push you down. I’ll not be someone or something I hate while working in this ecosystem. Mai apne aap ko ek visionary nahi bolta. <span className="text-white">But kya mai hoon?</span>
-                                            </p>
-
-                                            <p className="text-neutral-200">
-                                                Look down at me, <span className="font-bold">&ldquo;haan mai hoon&rdquo;</span>, or look up to me <span className="font-bold">&ldquo;haan mai hoon&rdquo;</span>.
-                                            </p>
-
-                                            <p>
-                                                My idea of bringing revolution is not to empower the weak, My idea is to just bring enough power to let everyone breathe.
-                                            </p>
-
-                                            <p>
-                                                I consumed so much cinema that it made me want to become a filmmaker… <span className="italic font-bold">aisa bachpan se.</span> Music, as an umbrella, is what keeps me alive. Cinema, music, art, yeh sab bohot badi badi baatein hain; jidhar tak dikhta hai, woh story, <span className="text-amber-400 drop-shadow-[0_0_10px_rgba(251,191,36,0.5)] font-medium">usse aage jo hai, woh main</span>.
-                                            </p>
-                                        </div>
-
-                                        <div className="pt-6 border-t border-white/5">
-                                            <p className="text-lg md:text-xl text-amber-500/90 font-serif italic text-center md:text-left">
-                                                Horizon is a place where earth and sky meet;<br />
-                                                <span className="text-red-500">to aage se mere naam ka matlab mat poochna!</span>
+                                        <div className="pt-4 border-t border-white/10 mt-6">
+                                            <p className="text-lg md:text-xl text-white font-primary italic">
+                                                I work at the horizon, where stories stretch beyond frames, where comfort ends, and honesty begins.
                                             </p>
                                         </div>
                                     </div>

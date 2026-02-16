@@ -197,7 +197,6 @@ export default function IntroSequence() {
                             className="text-3xl md:text-7xl lg:text-8xl font-black uppercase tracking-[0.1em] text-center px-4"
                             style={{
                                 color: '#ffffff', // White
-                                textShadow: '1px 1px 0 #FFD700, -1px 1px 0 #FFD700, 1px -1px 0 #FFD700, -1px -1px 0 #FFD700' // Simulated Golden Stroke
                             }}
                         >
                             KSHOT BY KSHITIJ
@@ -205,7 +204,7 @@ export default function IntroSequence() {
                         <p
                             className="text-xl md:text-3xl text-white mt-6 font-bold tracking-normal"
                         >
-                            સમર્પિત-2-સિનેમા
+                            Street bred. Cinema fed.
                         </p>
                     </motion.div>
                 </div>
@@ -220,7 +219,6 @@ export default function IntroSequence() {
                             className="text-3xl md:text-7xl lg:text-8xl font-black uppercase tracking-[0.1em] text-center px-4"
                             style={{
                                 color: '#ffffff', // White
-                                textShadow: '1px 1px 0 #FFD700, -1px 1px 0 #FFD700, 1px -1px 0 #FFD700, -1px -1px 0 #FFD700' // Simulated Golden Stroke
                             }}
                         >
                             KSHOT BY KSHITIJ
@@ -228,7 +226,7 @@ export default function IntroSequence() {
                         <p
                             className="text-xl md:text-3xl text-white mt-6 font-bold tracking-normal"
                         >
-                            સમર્પિત-2-સિનેમા
+                            Street bred. Cinema fed.
                         </p>
                     </motion.div>
                 </div>
@@ -239,7 +237,7 @@ export default function IntroSequence() {
                         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 text-xs tracking-widest uppercase animate-bounce"
                         style={{ opacity: indicatorOpacity }}
                     >
-                        Scroll કરીયે તો કેવું રેહ?????
+                        Keep scrolling. It gets real.
                     </motion.div>
                 )}
             </div>

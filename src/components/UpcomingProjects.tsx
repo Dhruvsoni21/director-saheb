@@ -37,13 +37,13 @@ export default function UpcomingProjects({ projects }: { projects: Project[] }) 
     };
 
     return (
-        <section className="py-24 bg-neutral-950 border-t border-neutral-900 overflow-hidden select-none">
+        <section className="py-24 bg-neutral-950 border-t border-white/10 overflow-hidden select-none">
             <div className="container mx-auto px-4">
-                <h2 className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-12 ml-2">Upcoming Projects</h2>
+                <h2 className="text-xs uppercase tracking-[0.3em] text-white/60 mb-12 ml-2">Almost</h2>
 
                 <div className="relative w-full max-w-5xl mx-auto">
                     {/* Main Card Area */}
-                    <div className="overflow-hidden rounded-[2.5rem] bg-neutral-900 border border-neutral-800 aspect-[9/16] md:aspect-[21/9] shadow-2xl">
+                    <div className="overflow-hidden rounded-[2.5rem] bg-white/5 border border-white/10 aspect-[9/16] md:aspect-[21/9] shadow-2xl">
                         <motion.div
                             className="flex h-full"
                             drag="x"
@@ -56,7 +56,7 @@ export default function UpcomingProjects({ projects }: { projects: Project[] }) 
                             {upcomingProjects.map((project) => (
                                 <div key={project.id} className="min-w-full h-full flex flex-col md:flex-row">
                                     {/* Left: Image Placeholder */}
-                                    <div className={`w-full md:w-1/2 h-48 md:h-full ${project.color || 'bg-neutral-900'} flex items-center justify-center relative overflow-hidden group flex-shrink-0`}>
+                                    <div className={`w-full md:w-1/2 h-48 md:h-full ${project.color || 'bg-white/5'} flex items-center justify-center relative overflow-hidden group flex-shrink-0`}>
                                         {project.src && project.src !== '/placeholder' ? (
                                             <img
                                                 src={project.src}
@@ -76,10 +76,10 @@ export default function UpcomingProjects({ projects }: { projects: Project[] }) 
                                     </div>
 
                                     {/* Right: Content */}
-                                    <div className="w-full md:w-1/2 p-5 md:p-12 flex flex-col bg-neutral-900 relative flex-1 min-h-0">
+                                    <div className="w-full md:w-1/2 p-5 md:p-12 flex flex-col bg-white/5 relative flex-1 min-h-0">
                                         <div className="flex flex-col h-full max-h-full overflow-hidden">
                                             <div className="flex-shrink-0 mb-4 pt-4 md:pt-0">
-                                                <span className="text-xs font-bold text-amber-500 uppercase tracking-[0.2em]">{project.date}</span>
+                                                <span className="text-xs font-bold text-white uppercase tracking-[0.2em]">{project.date}</span>
                                             </div>
 
                                             <div className="flex-shrink-0 mb-6">
@@ -92,7 +92,7 @@ export default function UpcomingProjects({ projects }: { projects: Project[] }) 
                                                 className="flex-grow pr-4 -mr-4 overflow-y-auto custom-scrollbar cursor-auto"
                                                 onPointerDown={(e) => e.stopPropagation()}
                                             >
-                                                <p className="text-neutral-400 leading-relaxed text-sm md:text-base font-light opacity-90">
+                                                <p className="text-white/70 leading-relaxed text-sm md:text-base font-light opacity-90">
                                                     {project.description}
                                                 </p>
                                             </div>
@@ -109,7 +109,7 @@ export default function UpcomingProjects({ projects }: { projects: Project[] }) 
                             <button
                                 key={idx}
                                 onClick={() => handleIndexChange(idx)}
-                                className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? "w-8 bg-white" : "w-2 bg-neutral-700 hover:bg-neutral-500"
+                                className={`h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? "w-8 bg-white" : "w-2 bg-white/30 hover:bg-white/50"
                                     }`}
                                 aria-label={`Go to project ${idx + 1}`}
                                 suppressHydrationWarning

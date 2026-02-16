@@ -52,7 +52,7 @@ export default function ClientHome({ projects }: { projects: Project[] }) {
                 <ContactFooter />
             </div>
 
-            <Credits />
+            {/* <Credits /> */}
 
             <AnimatePresence>
                 {selectedProject && (

@@ -8,9 +8,9 @@ export default function HighlightedWork({ projects, onOpenProject }: { projects:
     if (projects.length === 0) return null;
 
     return (
-        <section className="py-24 bg-neutral-950 border-t border-neutral-900">
+        <section className="py-24 bg-neutral-950 border-t border-white/10">
             <div className="container mx-auto px-4">
-                <h2 className="text-xs uppercase tracking-[0.3em] text-neutral-500 mb-12 ml-2">Selected Works</h2>
+                <h2 className="text-xs uppercase tracking-[0.3em] text-white/60 mb-12 ml-2">Becoming</h2>
 
                 <div className="space-y-32">
                     {projects.map((project, index) => (
@@ -25,7 +25,7 @@ export default function HighlightedWork({ projects, onOpenProject }: { projects:
                             {/* Media */}
                             <div
                                 onClick={() => onOpenProject(project)}
-                                className="w-[55%] md:w-2/3 aspect-video bg-neutral-900 relative group overflow-hidden cursor-pointer"
+                                className="w-[55%] md:w-2/3 aspect-video bg-white/5 relative group overflow-hidden cursor-pointer"
                             >
                                 {project.type === 'image' || project.thumbnail ? (
                                     // eslint-disable-next-line @next/next/no-img-element
@@ -35,7 +35,7 @@ export default function HighlightedWork({ projects, onOpenProject }: { projects:
                                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                                     />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center bg-neutral-800">
+                                    <div className="w-full h-full flex items-center justify-center bg-white/10">
                                         <Play className="text-white/20" size={64} />
                                     </div>
                                 )}
@@ -47,7 +47,7 @@ export default function HighlightedWork({ projects, onOpenProject }: { projects:
                             {/* Info */}
                             <div className="w-[45%] md:w-1/3 text-left">
                                 <h3 className="text-lg md:text-5xl font-light mb-2 md:mb-4 leading-tight">{project.title}</h3>
-                                <p className="text-neutral-500 mb-4 text-xs md:text-sm leading-relaxed hidden md:block">
+                                <p className="text-white/60 mb-4 text-xs md:text-sm leading-relaxed hidden md:block">
                                     {project.description}
                                 </p>
                                 <button

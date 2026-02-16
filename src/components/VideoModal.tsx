@@ -60,7 +60,7 @@ export default function VideoModal({ project, onClose }: { project: Project | nu
                 <X size={32} />
             </button>
 
-            <div className="w-full max-w-7xl max-h-[90vh] overflow-y-auto no-scrollbar rounded-xl bg-neutral-900 border border-neutral-800 p-6 md:p-8 relative">
+            <div className="w-full max-w-7xl max-h-[90vh] overflow-y-auto no-scrollbar rounded-xl bg-neutral-900 border border-white/10 p-6 md:p-8 relative">
                 <div className="flex flex-col lg:flex-row gap-6 lg:gap-10 items-start">
                     {/* Media Container */}
                     <div className="flex-1 w-full relative group overflow-hidden rounded-lg bg-black aspect-video shadow-2xl">
@@ -97,15 +97,15 @@ export default function VideoModal({ project, onClose }: { project: Project | nu
                     <div className="w-full lg:w-[350px] shrink-0 flex flex-col gap-4">
                         <div>
                             <h2 className="text-2xl md:text-3xl font-medium text-white mb-2">{project.title}</h2>
-                            <div className="flex flex-wrap gap-2 text-xs uppercase tracking-widest text-neutral-400 mb-4">
-                                <span className="px-2 py-1 bg-neutral-800 rounded">{project.category}</span>
-                                <span className="px-2 py-1 bg-neutral-800 rounded">{project.date ? new Date(project.date).getFullYear() : '2025'}</span>
+                            <div className="flex flex-wrap gap-2 text-xs uppercase tracking-widest text-white/50 mb-4">
+                                <span className="px-2 py-1 bg-white/10 rounded">{project.category}</span>
+                                <span className="px-2 py-1 bg-white/10 rounded">{project.date ? new Date(project.date).getFullYear() : '2025'}</span>
                             </div>
                         </div>
 
-                        <div className="w-full h-[1px] bg-neutral-800 my-1 lg:hidden" />
+                        <div className="w-full h-[1px] bg-white/10 my-1 lg:hidden" />
 
-                        <p className="text-neutral-300 text-sm leading-relaxed whitespace-pre-line">
+                        <p className="text-white/80 text-sm leading-relaxed whitespace-pre-line">
                             {project.description}
                         </p>
                     </div>

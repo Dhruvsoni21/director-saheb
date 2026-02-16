@@ -20,46 +20,41 @@ export default function Navigation() {
         >
             <button
                 onClick={() => scrollToSection('home')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                Home
+                Between
             </button>
             <button
                 onClick={() => scrollToSection('archive')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                Archive
+                Elsewhere
             </button>
             <button
                 onClick={() => scrollToSection('specials')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                Specials
+                Becoming
             </button>
             <button
                 onClick={() => scrollToSection('upcoming')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                Upcoming
+                Almost
             </button>
             <button
                 onClick={() => scrollToSection('about')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                About
+                There
             </button>
             <button
                 onClick={() => scrollToSection('contact')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
-                Contact
+                Where?
             </button>
-            <button
-                onClick={() => scrollToSection('credits')}
-                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-neutral-400 transition-colors whitespace-nowrap"
-            >
-                Credits
-            </button>
+
         </motion.nav>
     );
 }
