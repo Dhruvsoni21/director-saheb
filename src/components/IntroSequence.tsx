@@ -36,7 +36,7 @@ export default function IntroSequence() {
                 const img = new Image();
                 // Format: 001, 002, ..., 192
                 const paddedIndex = i.toString().padStart(3, '0');
-                img.src = `${IMAGES_FOLDER}${IMAGE_NAME_PREFIX}${paddedIndex}.jpg`;
+                img.src = `${IMAGES_FOLDER}${IMAGE_NAME_PREFIX}${paddedIndex}.avif`;
 
                 await new Promise<void>((resolve) => {
                     img.onload = () => {
