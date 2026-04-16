@@ -44,8 +44,9 @@ export async function POST(request: Request) {
             filename: result.public_id
         }, { status: 201 });
 
-    } catch (error) {
+    } catch (error: any) {
         console.error('Upload error:', error);
-        return NextResponse.json({ error: 'Failed to upload file to Cloudinary' }, { status: 500 });
+        require('fs').appendFileSync('debug-upload.log', new Date().toISOString() + ' ERROR: ' + (error.stack || error) + '\n');
+        return NextResponse.json({ error: error.message || 'Failed to upload file to Cloudinary' }, { status: 500 });
     }
 }

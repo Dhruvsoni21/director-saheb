@@ -53,7 +53,7 @@ export async function POST(request: Request) {
             description: body.description || '',
             type: body.type || 'image',
             src: body.src,
-            thumbnail: body.thumbnail,
+            thumbnail: body.thumbnail || '',
             featured: body.featured || false,
             category: body.category || 'General',
             date: body.date || new Date().toISOString(),
@@ -63,8 +63,9 @@ export async function POST(request: Request) {
 
         await addProject(newProject);
         return NextResponse.json(newProject, { status: 201 });
-    } catch {
-        return NextResponse.json({ error: 'Failed to create project' }, { status: 500 });
+    } catch (error: any) {
+        console.error('Create project error:', error);
+        return NextResponse.json({ error: error.message || 'Failed to create project' }, { status: 500 });
     }
 }
 

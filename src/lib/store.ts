@@ -104,3 +104,92 @@ export async function reorderProjects(newOrder: Project[]): Promise<void> {
     await batch.commit();
 }
 
+// ─── Collaborations ─────────────────────────────────────────────────────
+
+export interface Collaboration {
+    id: string;
+    title: string;
+    client: string;
+    description: string;
+    type: 'instagram' | 'video' | 'image';
+    thumbnail: string;
+    external_url: string;
+    category?: string;
+    order?: number;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
+const COLLABORATIONS_COLLECTION = 'collaborations';
+
+export async function getCollaborations(): Promise<Collaboration[]> {
+    const collabRef = collection(db, COLLABORATIONS_COLLECTION);
+    const querySnapshot = await getDocs(collabRef);
+    const collaborations: Collaboration[] = [];
+
+    querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        collaborations.push({
+            id: docSnap.id,
+            ...data
+        } as Collaboration);
+    });
+
+    return collaborations.sort((a, b) => {
+        const orderA = a.order ?? Number.MAX_SAFE_INTEGER;
+        const orderB = b.order ?? Number.MAX_SAFE_INTEGER;
+        return orderA - orderB;
+    });
+}
+
+export async function addCollaboration(collaboration: Collaboration): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...data } = collaboration;
+
+    const collabRef = collection(db, COLLABORATIONS_COLLECTION);
+    const querySnapshot = await getDocs(collabRef);
+    const newOrder = querySnapshot.size;
+
+    await addDoc(collection(db, COLLABORATIONS_COLLECTION), {
+        ...data,
+        order: newOrder,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+    });
+}
+
+export async function updateCollaboration(updated: Collaboration): Promise<void> {
+    const { id, ...data } = updated;
+    const collabRef = doc(db, COLLABORATIONS_COLLECTION, id);
+
+    await updateDoc(collabRef, {
+        ...data,
+        updatedAt: new Date().toISOString()
+    });
+}
+
+export async function getCollaborationById(id: string): Promise<Collaboration | null> {
+    const collabRef = doc(db, COLLABORATIONS_COLLECTION, id);
+    const snap = await getDoc(collabRef);
+
+    if (snap.exists()) {
+        return { id: snap.id, ...snap.data() } as Collaboration;
+    }
+    return null;
+}
+
+export async function deleteCollaboration(id: string): Promise<void> {
+    await deleteDoc(doc(db, COLLABORATIONS_COLLECTION, id));
+}
+
+export async function reorderCollaborations(newOrder: Collaboration[]): Promise<void> {
+    const batch = writeBatch(db);
+
+    newOrder.forEach((collab, index) => {
+        const collabRef = doc(db, COLLABORATIONS_COLLECTION, collab.id);
+        batch.update(collabRef, { order: index });
+    });
+
+    await batch.commit();
+}
+

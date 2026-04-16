@@ -101,7 +101,16 @@ export default function ProjectForm({ initialData, onCancel, onSuccess }: Projec
                     body: uploadData,
                 });
 
-                if (!uploadRes.ok) throw new Error('Upload failed');
+                if (!uploadRes.ok) {
+                    let errMsg = 'Upload failed';
+                    try {
+                        const errData = await uploadRes.json();
+                        if (errData.error) errMsg += ': ' + errData.error;
+                    } catch (e) {
+                        errMsg += ` (${uploadRes.status} ${uploadRes.statusText})`;
+                    }
+                    throw new Error(errMsg);
+                }
                 const uploadJson = await uploadRes.json();
 
                 if (formData.isUpcoming) {
@@ -130,7 +139,10 @@ export default function ProjectForm({ initialData, onCancel, onSuccess }: Projec
                 body: JSON.stringify(payload),
             });
 
-            if (!res.ok) throw new Error('Action failed');
+            if (!res.ok) {
+                const errData = await res.json().catch(() => ({}));
+                throw new Error(errData.error || 'Action failed');
+            }
 
             router.refresh();
             onSuccess();
@@ -155,7 +167,7 @@ export default function ProjectForm({ initialData, onCancel, onSuccess }: Projec
 
         } catch (error) {
             console.error(error);
-            alert('Failed to save project');
+            alert('Failed to save project: ' + (error instanceof Error ? error.message : String(error)));
         } finally {
             setLoading(false);
         }

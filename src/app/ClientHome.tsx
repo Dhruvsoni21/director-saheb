@@ -8,12 +8,12 @@ import VideoModal from "@/components/VideoModal";
 import ContactFooter from "@/components/ContactFooter";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
+import FeaturedWork from "@/components/FeaturedWork";
 import { Project } from "@/lib/store";
 import { motion, AnimatePresence } from "framer-motion";
 
 import UpcomingProjects from "@/components/UpcomingProjects";
 import AboutMe from "@/components/AboutMe";
-import Credits from "@/components/Credits";
 
 export default function ClientHome({ projects }: { projects: Project[] }) {
     const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -40,6 +40,10 @@ export default function ClientHome({ projects }: { projects: Project[] }) {
                 />
             </div>
 
+            <div id="collaborations">
+                <FeaturedWork />
+            </div>
+
             <div id="upcoming">
                 <UpcomingProjects projects={projects.filter(p => p.isUpcoming)} />
             </div>
@@ -51,8 +55,6 @@ export default function ClientHome({ projects }: { projects: Project[] }) {
             <div id="contact">
                 <ContactFooter />
             </div>
-
-            {/* <Credits /> */}
 
             <AnimatePresence>
                 {selectedProject && (
