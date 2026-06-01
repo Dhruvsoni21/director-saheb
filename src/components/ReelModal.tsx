@@ -41,7 +41,7 @@ export default function ReelModal({
                     {/* Close Button */}
                     <button
                         onClick={onClose}
-                        className="absolute top-4 right-4 md:top-8 md:right-8 z-[210] w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300 cursor-pointer"
+                        className="absolute top-4 right-4 md:top-8 md:right-8 z-[210] w-10 h-10 rounded-full bg-black/90 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 hover:text-white hover:bg-black transition-all duration-300 cursor-pointer shadow-xl"
                         aria-label="Close modal"
                     >
                         <X size={20} />
@@ -106,7 +106,7 @@ export default function ReelModal({
                                             fill="currentColor"
                                         />
                                     </svg>
-                                    <span className="text-white/70 text-[10px] tracking-wider uppercase font-medium">
+                                    <span className="text-white/70 text-[10px] leading-none tracking-wider uppercase font-medium translate-y-[0.5px]">
                                         Reel
                                     </span>
                                 </div>

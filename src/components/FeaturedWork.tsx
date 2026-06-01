@@ -80,7 +80,7 @@ function FeaturedCard({
                     {project.type === "instagram" && (
                         <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10 opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                             <InstagramIcon className="text-white/90" />
-                            <span className="text-white/80 text-[9px] tracking-widest uppercase font-medium">
+                            <span className="text-white/80 text-[9px] leading-none tracking-widest uppercase font-medium translate-y-[0.5px]">
                                 Reel
                             </span>
                         </div>
@@ -88,8 +88,8 @@ function FeaturedCard({
 
                     {/* Category Pill — Bottom Left */}
                     {project.category && (
-                        <div className="absolute bottom-3 left-3 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/10">
-                            <span className="text-white/80 text-[9px] tracking-widest uppercase font-medium">
+                        <div className="absolute bottom-3 left-3 px-3 py-1 flex items-center justify-center bg-white/10 backdrop-blur-md rounded-full border border-white/10">
+                            <span className="text-white/80 text-[9px] leading-none tracking-widest uppercase font-medium translate-y-[0.5px]">
                                 {project.category}
                             </span>
                         </div>
