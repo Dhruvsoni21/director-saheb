@@ -261,7 +261,7 @@ export default function FeaturedWork() {
                         className="mt-16 text-center"
                     >
                         <a
-                            href="https://instagram.com"
+                            href="https://www.instagram.com/shrota.kshitij_?igsh=NW14cnk1N3JqdGZo&utm_source=qr"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-3 bg-white/[0.04] border border-white/10 px-8 py-3.5 rounded-full text-white/70 text-xs uppercase tracking-[0.15em] hover:bg-white/[0.08] hover:text-white hover:border-white/20 transition-all duration-300 group/follow"
