@@ -9,6 +9,7 @@ import ContactFooter from "@/components/ContactFooter";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import FeaturedWork from "@/components/FeaturedWork";
+import ActingSection from "@/components/ActingSection";
 import { Project } from "@/lib/store";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -42,6 +43,10 @@ export default function ClientHome({ projects }: { projects: Project[] }) {
 
             <div id="collaborations">
                 <FeaturedWork />
+            </div>
+
+            <div id="acting">
+                <ActingSection />
             </div>
 
             <div id="upcoming">

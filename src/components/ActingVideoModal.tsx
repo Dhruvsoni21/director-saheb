@@ -1,0 +1,227 @@
+"use client";
+
+import { motion, AnimatePresence } from "framer-motion";
+import { X, ArrowUpRight } from "lucide-react";
+import type { ActingProject } from "@/lib/store";
+
+// ─── Embed URL Helper ───────────────────────────────────────────────────
+function getEmbedUrl(url: string): string | null {
+    try {
+        if (url.includes('youtube.com') || url.includes('youtu.be')) {
+            let videoId = '';
+            if (url.includes('/shorts/')) {
+                videoId = url.split('/shorts/')[1].split('?')[0];
+            } else if (url.includes('youtu.be')) {
+                videoId = url.split('/').pop()?.split('?')[0] || '';
+            } else {
+                const urlParams = new URLSearchParams(new URL(url).search);
+                videoId = urlParams.get('v') || '';
+            }
+            return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=1` : null;
+        }
+        if (url.includes('vimeo.com')) {
+            const videoId = url.split('/').pop();
+            return videoId ? `https://player.vimeo.com/video/${videoId}?autoplay=1` : null;
+        }
+        if (url.includes('instagram.com')) {
+            const match = url.match(/(?:reel|p)\/([^/?]+)/);
+            const videoId = match ? match[1] : null;
+            return videoId ? `https://www.instagram.com/p/${videoId}/embed` : null;
+        }
+    } catch {
+        return null;
+    }
+    return null;
+}
+
+// ─── Film Icon ──────────────────────────────────────────────────────────
+function FilmIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+        >
+            <rect x="2" y="2" width="20" height="20" rx="2" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="2" y1="7" x2="22" y2="7" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="2" y1="17" x2="22" y2="17" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="6" y1="2" x2="6" y2="7" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="18" y1="2" x2="18" y2="7" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="6" y1="17" x2="6" y2="22" stroke="currentColor" strokeWidth="1.5" />
+            <line x1="18" y1="17" x2="18" y2="22" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+    );
+}
+
+// ─── Instagram SVG Icon ─────────────────────────────────────────────────
+function InstagramIcon({ className }: { className?: string }) {
+    return (
+        <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            className={className}
+        >
+            <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
+                fill="currentColor"
+            />
+        </svg>
+    );
+}
+
+export default function ActingVideoModal({
+    project,
+    onClose,
+}: {
+    project: ActingProject | null;
+    onClose: () => void;
+}) {
+    if (!project) return null;
+
+    const embedUrl = getEmbedUrl(project.video_url);
+
+    return (
+        <AnimatePresence>
+            {project && (
+                <motion.div
+                    key="acting-modal-backdrop"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="fixed inset-0 z-[200] flex items-center justify-center p-4 md:p-8"
+                    onClick={onClose}
+                >
+                    {/* Backdrop */}
+                    <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" />
+
+                    {/* Close Button */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 md:top-8 md:right-8 z-[210] w-10 h-10 rounded-full bg-black/90 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 hover:text-white hover:bg-black transition-all duration-300 cursor-pointer shadow-xl"
+                        aria-label="Close modal"
+                    >
+                        <X size={20} />
+                    </button>
+
+                    {/* Modal Content */}
+                    <motion.div
+                        key="acting-modal-content"
+                        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+                        transition={{
+                            type: "spring",
+                            stiffness: 300,
+                            damping: 30,
+                            delay: 0.05,
+                        }}
+                        className="relative w-full max-w-3xl z-[205]"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="bg-neutral-900/80 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(0,0,0,0.8)]">
+                            {/* Video / Thumbnail Area */}
+                            <div className="relative aspect-video w-full overflow-hidden bg-black">
+                                {embedUrl ? (
+                                    <iframe
+                                        src={embedUrl}
+                                        frameBorder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture"
+                                        allowFullScreen
+                                        title={project.title}
+                                        className="w-full h-full"
+                                    />
+                                ) : (
+                                    <>
+                                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                                        <img
+                                            src={project.thumbnail}
+                                            alt={project.title}
+                                            className="w-full h-full object-cover"
+                                        />
+
+                                        {/* Gradient Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-transparent to-black/30" />
+
+                                        {/* Play Link Overlay */}
+                                        {project.video_url && (
+                                            <div className="absolute inset-0 flex items-center justify-center">
+                                                <a
+                                                    href={project.video_url}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="group/play flex flex-col items-center gap-4"
+                                                >
+                                                    <div className="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md border border-white/30 flex items-center justify-center transition-all duration-500 group-hover/play:scale-110 group-hover/play:bg-white/25 group-hover/play:shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+                                                        <div className="w-0 h-0 border-t-[10px] border-t-transparent border-l-[16px] border-l-white border-b-[10px] border-b-transparent ml-1.5 drop-shadow-lg" />
+                                                    </div>
+                                                    <span className="text-white/60 text-xs tracking-widest uppercase group-hover/play:text-white/90 transition-colors">
+                                                        Watch Video
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        )}
+                                    </>
+                                )}
+
+                                {/* Type Badge */}
+                                <div className="absolute top-4 right-4 flex items-center gap-2 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10">
+                                    {project.type === 'reel' ? <InstagramIcon className="text-white/80" /> : <FilmIcon className="text-white/80" />}
+                                    <span className="text-white/70 text-[10px] leading-none tracking-wider uppercase font-medium translate-y-[0.5px]">
+                                        {project.type === 'reel' ? 'Reel' : 'Acting'}
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Info Section — Title & Category only, no description */}
+                            <div className="p-6 md:p-8 space-y-5">
+                                {/* Title & Category */}
+                                <div>
+                                    <h3 className="text-xl md:text-2xl font-medium text-white mb-1.5 tracking-tight">
+                                        {project.title}
+                                    </h3>
+                                    {project.category && (
+                                        <span className="inline-block text-white/40 text-xs tracking-widest uppercase bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                                            {project.category}
+                                        </span>
+                                    )}
+                                </div>
+
+                                {/* Divider */}
+                                <div className="w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+                                {/* CTA Buttons */}
+                                <div className="flex flex-col sm:flex-row gap-3">
+                                    {project.video_url && (
+                                        <a
+                                            href={project.video_url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex-1 flex items-center justify-center gap-2 bg-white text-black px-6 py-3 rounded-xl text-sm font-medium hover:bg-white/90 transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] group/cta"
+                                        >
+                                            Watch Video
+                                            <ArrowUpRight
+                                                size={16}
+                                                className="group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5 transition-transform"
+                                            />
+                                        </a>
+                                    )}
+                                    <button
+                                        onClick={onClose}
+                                        className="flex-1 flex items-center justify-center gap-2 bg-white/5 text-white/80 px-6 py-3 rounded-xl text-sm border border-white/10 hover:bg-white/10 hover:text-white transition-all duration-300 cursor-pointer"
+                                    >
+                                        Close
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                </motion.div>
+            )}
+        </AnimatePresence>
+    );
+}

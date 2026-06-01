@@ -193,3 +193,90 @@ export async function reorderCollaborations(newOrder: Collaboration[]): Promise<
     await batch.commit();
 }
 
+// ─── Acting Projects ────────────────────────────────────────────────────
+
+export interface ActingProject {
+    id: string;
+    title: string;
+    thumbnail: string;
+    video_url: string;
+    type?: 'reel' | 'youtube';
+    category?: string;
+    order?: number;
+    createdAt?: string;
+    updatedAt?: string;
+}
+
+const ACTING_COLLECTION = 'actingProjects';
+
+export async function getActingProjects(): Promise<ActingProject[]> {
+    const actingRef = collection(db, ACTING_COLLECTION);
+    const querySnapshot = await getDocs(actingRef);
+    const projects: ActingProject[] = [];
+
+    querySnapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+        projects.push({
+            id: docSnap.id,
+            ...data
+        } as ActingProject);
+    });
+
+    return projects.sort((a, b) => {
+        const orderA = a.order ?? Number.MAX_SAFE_INTEGER;
+        const orderB = b.order ?? Number.MAX_SAFE_INTEGER;
+        return orderA - orderB;
+    });
+}
+
+export async function addActingProject(project: ActingProject): Promise<void> {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id, ...data } = project;
+
+    const actingRef = collection(db, ACTING_COLLECTION);
+    const querySnapshot = await getDocs(actingRef);
+    const newOrder = querySnapshot.size;
+
+    await addDoc(collection(db, ACTING_COLLECTION), {
+        ...data,
+        order: newOrder,
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString()
+    });
+}
+
+export async function updateActingProject(updated: ActingProject): Promise<void> {
+    const { id, ...data } = updated;
+    const actingRef = doc(db, ACTING_COLLECTION, id);
+
+    await updateDoc(actingRef, {
+        ...data,
+        updatedAt: new Date().toISOString()
+    });
+}
+
+export async function getActingProjectById(id: string): Promise<ActingProject | null> {
+    const actingRef = doc(db, ACTING_COLLECTION, id);
+    const snap = await getDoc(actingRef);
+
+    if (snap.exists()) {
+        return { id: snap.id, ...snap.data() } as ActingProject;
+    }
+    return null;
+}
+
+export async function deleteActingProject(id: string): Promise<void> {
+    await deleteDoc(doc(db, ACTING_COLLECTION, id));
+}
+
+export async function reorderActingProjects(newOrder: ActingProject[]): Promise<void> {
+    const batch = writeBatch(db);
+
+    newOrder.forEach((project, index) => {
+        const actingRef = doc(db, ACTING_COLLECTION, project.id);
+        batch.update(actingRef, { order: index });
+    });
+
+    await batch.commit();
+}
+

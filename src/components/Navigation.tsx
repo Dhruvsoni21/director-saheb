@@ -43,6 +43,12 @@ export default function Navigation() {
                 Together
             </button>
             <button
+                onClick={() => scrollToSection('acting')}
+                className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
+            >
+                ALTER
+            </button>
+            <button
                 onClick={() => scrollToSection('upcoming')}
                 className="text-white text-[9px] md:text-xs uppercase tracking-tight md:tracking-[0.2em] hover:text-white/70 transition-colors whitespace-nowrap"
             >
